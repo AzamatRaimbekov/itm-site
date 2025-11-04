@@ -117,13 +117,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Для Vercel
+# Для Vercel - упрощенная конфигурация
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
-# WhiteNoise настройки для статических файлов  
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = config('MEDIA_ROOT', default=str(BASE_DIR / 'media'))

@@ -72,10 +72,8 @@ python manage.py createsuperuser
 
 ## Статические файлы
 
-Статические файлы обрабатываются автоматически через:
-- WhiteNoise middleware
-- Скрипт `build_files.sh`
-- Конфигурация в `vercel.json`
+Статические файлы обрабатываются автоматически через Django's collectstatic.
+Vercel автоматически обнаружит и соберет статические файлы при развертывании.
 
 ## Проверка развертывания
 
@@ -91,8 +89,8 @@ python manage.py createsuperuser
 - Проверьте, что миграции выполнены
 
 ### 2. Ошибки со статическими файлами
-- Проверьте права доступа к `build_files.sh`
 - Убедитесь, что директория `static/` существует
+- Проверьте настройки STATIC_ROOT и STATICFILES_DIRS
 
 ### 3. CORS ошибки
 - Добавьте домен фронтенда в CORS_ALLOWED_ORIGINS
@@ -115,8 +113,7 @@ vercel remove
 
 ```
 project/
-├── vercel.json          # Конфигурация Vercel
-├── build_files.sh       # Скрипт сборки статических файлов
+├── vercel.json          # Конфигурация Vercel (упрощенная)
 ├── requirements.txt     # Python зависимости
 ├── backend/
 │   ├── wsgi.py         # WSGI приложение (обновлено для Vercel)
